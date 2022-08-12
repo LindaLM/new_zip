@@ -37,7 +37,7 @@ pipeline {
             options { timeout(1) }
             steps {
                 git branch: "${params.BRANCH}", 
-                url: 'https://github.com/LindaLM/make_zip.git'
+                url: 'https://github.com/LindaLM/new_zip.git'
             }
         }
         stage ("Set") {
