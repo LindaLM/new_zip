@@ -42,7 +42,7 @@ pipeline {
         }
         stage ("Set") {
             steps {
-                echo "${LINE}_${VERSION}"
+                echo "${LINE}_${R_VAR}"
                 sh 'sleep 9s'
                 echo "${RED}Set ${NC}"
             }
