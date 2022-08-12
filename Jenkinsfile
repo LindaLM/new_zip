@@ -43,7 +43,7 @@ pipeline {
         stage ("Set") {
             steps {
                 echo "${LINE}_${R_VAR}"
-                sh 'sleep 9s'
+                sh 'sleep 5s'
                 echo "${RED}Set ${NC}"
             }
         }
@@ -57,7 +57,7 @@ pipeline {
             options { timeout(time: 12, unit: 'SECONDS') }
             steps {
                 echo "${RED}Testing ... ${NC}"
-                sh 'sleep 10s'
+                sh 'sleep 3s'
                 echo "${RED}Tested${NC}"
             }
         }
@@ -101,6 +101,7 @@ pipeline {
                 message "Please download and test zip and press PROCEED to continue: \n ${env.BUILD_URL}!"
             }
             steps {
+                sh 'sleep 5s'
                 echo "${RED}Test 2 proceded${NC}"
             }
         }
@@ -110,6 +111,7 @@ pipeline {
                 message "Please download and test zip and press PROCEED to continue: \n ${env.BUILD_URL}!"
             }
             steps {
+                sh 'sleep 4s'
                 echo "${RED}Test 3 proceded${NC}"
             }
         }
@@ -166,6 +168,7 @@ pipeline {
             when { environment name: 'D_N', value: 'true'}
             options { timeout(time: 10, unit: "SECONDS") }
             steps {
+                sh 'sleep 5s'
                 echo "${RED}Verified${NC}"
             }
         }
