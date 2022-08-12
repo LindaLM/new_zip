@@ -2,18 +2,18 @@ pipeline {
     agent any
     
     parameters {
-        string defaultValue: 'file.xml', name: 'M', trim: true
-        string defaultValue: 'file2.xml', name: 'P_M', trim: true
-        string defaultValue: 'id', name: 'A_ID', trim: true
-        string defaultValue: 'v0.0.0', name: 'R_VER',  trim: true
-        booleanParam defaultValue: true, name: 'D_N'
-        booleanParam defaultValue: true, name: 'D_C'
-        booleanParam defaultValue: true, name: 'D_D'
-        booleanParam defaultValue: true, name: 'MERGE'
-        choice choices: ['aaaa', 'bbbb'], name: 'VERSION'
-        choice choices: ['0.1', '2.2'], name: 'LINE'
-        booleanParam defaultValue: true, name: 'TXT'
-        booleanParam defaultValue: true, name: 'B4K'
+        string defaultValue: 'file.xml', description: 'Please enter the name of M file for this release', name: 'M', trim: true
+        string defaultValue: 'file2.xml', description: 'Please enter the name of P_M filr for this release', name: 'P_M', trim: true
+        string defaultValue: 'id', description: 'Please enter the A_ID for this release', name: 'A_ID', trim: true
+        string defaultValue: 'v0.0.0', description: 'Please enter the R_VER for this release', name: 'R_VER',  trim: true
+        booleanParam defaultValue: true, description: 'Please enter if you want D_N', name: 'D_N'
+        booleanParam defaultValue: true, description: 'Please enter if you want D_C', name: 'D_C'
+        booleanParam defaultValue: true, description: 'Please enter if you want D_D', name: 'D_D'
+        booleanParam defaultValue: true, description: 'Please enter if you want to MERGE branches', name: 'MERGE'
+        choice choices: ['w', 'q'], description: 'Please choose R_VAR', name: 'R_VAR'
+        choice choices: ['0.1', '2.2'], description: 'Please choose LINE', name: 'LINE'
+        booleanParam defaultValue: true, description: 'Please enter if you want TXT', name: 'TXT'
+        booleanParam defaultValue: true, description: 'Please enter if you want B4K', name: 'B4K'
         gitParameter branchFilter: 'origin/(.*)', defaultValue: 'main', name: 'BRANCH', type: 'PT_BRANCH'
     }
     options {
