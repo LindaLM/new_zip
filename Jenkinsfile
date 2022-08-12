@@ -48,7 +48,7 @@ pipeline {
             }
         }
         stage ("Build") {
-            options { timeout(time: 3, unit: 'HOURS') }
+            options { timeout(time: 13, unit: 'SECONDS') }
             steps{
                 echo "${RED}Build${NC}"
             }
@@ -62,20 +62,20 @@ pipeline {
             }
         }
         stage("Analysis") {
-            options { timeout(time: 3, unit: "HOURS") }
+            options { timeout(time: 13, unit: "SECONDS") }
             steps {
                 echo "${RED}Analysis done${NC}"
             }
         }
         stage("List"){
-            options { timeout(time: 1, unit: "HOURS") }
+            options { timeout(time: 10, unit: "SECONDS") }
             steps {
                 echo "${RED}List generated${NC}"
             }
         }
 
         stage("Archive") {
-            options{ timeout(time: 1, unit: "HOURS") }
+            options{ timeout(time: 10, unit: "SECONDS") }
             parallel {
                 stage ("0.1") {
                     when {environment name: 'LINE', value: '0.1'}
@@ -96,7 +96,7 @@ pipeline {
             }
         }
         stage("Test 2") {
-            options { timeout(time: 1, unit: "HOURS") }
+            options { timeout(time: 20, unit: "SECONDS") }
             input {
                 message "Please download and test zip and press PROCEED to continue: \n ${env.BUILD_URL}!"
             }
@@ -105,7 +105,7 @@ pipeline {
             }
         }
         stage("Test 3") {
-            options { timeout(time: 1, unit: "HOURS") }
+            options { timeout(time: 20, unit: "SECONDS") }
             input {
                 message "Please download and test zip and press PROCEED to continue: \n ${env.BUILD_URL}!"
             }
@@ -115,14 +115,14 @@ pipeline {
         }
         stage("D_N - S") {
             when {environment name: 'D_N', value: 'true'}
-            options { timeout(time:1 , unit: "HOURS") }
+            options { timeout(time:10 , unit: "SECONDS") }
             steps {
                 echo "${RED}D_N - S${NC}"
             }
         }
         stage("D_N - A") {
             when {environment name: 'D_N', value: 'true'}
-            options { timeout(time:1 , unit: "HOURS") }
+            options { timeout(time:10 , unit: "SECONDS") }
             input {
                 message "Acknowledge"
             }
@@ -132,7 +132,7 @@ pipeline {
         }
         stage("D_N - D") {
             when {environment name: 'D_N', value: 'true'}
-            options { timeout(time:1 , unit: "HOURS") }
+            options { timeout(time:10 , unit: "SECONDS") }
             steps {
                 echo "${RED}D_N - D${NC}"
             }
@@ -140,7 +140,7 @@ pipeline {
         stage("B4K") {
             when{ allOf { environment name: 'LINE', value: '2.2';
                             environment name: 'B4K', value: 'true'} }
-            options { timeout(time: 3, unit: "HOURS")}
+            options { timeout(time: 13, unit: "SECONDS")}
             steps {
                 echo "${RED}B4K${NC}"
             }
@@ -148,7 +148,7 @@ pipeline {
         stage("B4K - A") {
             when{ allOf { environment name: 'LINE', value: '2.2';
                             environment name: 'B4K', value: 'true'} } 
-            options { timeout(time: 1, unit: "HOURS") }
+            options { timeout(time: 10, unit: "SECONDS") }
             steps {
                 echo "${RED}B4K - A${NC}"
             }
@@ -157,14 +157,14 @@ pipeline {
             when{ allOf { environment name: 'LINE', value: '2.2';
                             environment name: 'B4K', value: 'true';
                             environment name: 'D_N', value: 'true'} } 
-            options { timeout(time: 1, unit: "HOURS") }
+            options { timeout(time: 10, unit: "SECONDS") }
             steps {
                 echo "${RED}B4K - N${NC}"
             }
         }
         stage("Verification"){
             when { environment name: 'D_N', value: 'true'}
-            options { timeout(time: 1, unit: "HOURS") }
+            options { timeout(time: 10, unit: "SECONDS") }
             steps {
                 echo "${RED}Verified${NC}"
             }
