@@ -55,7 +55,7 @@ pipeline {
                 echo "${RED}Build${NC}"
             }
         }
-        stage("Archive") {
+        stage("Archive zip files") {
             options{ timeout(time: 10, unit: "SECONDS") }
             parallel {
                 stage ("0.1") {
