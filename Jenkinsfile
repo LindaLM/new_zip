@@ -77,8 +77,8 @@ pipeline {
         }
         stage("Message") {
             steps {
-                echo "${YEL}Please download & do test 2: \n ${env.BUILD_URL}artifact/ ${NC}"
-                echo "${YEL}Please download & do test 3: \n ${env.BUILD_URL}artifact/ ${NC}"
+                echo "${GREEN}Please download & do test 2: \n ${env.BUILD_URL}artifact/ ${NC}"
+                echo "${GREEN}Please download & do test 3: \n ${env.BUILD_URL}artifact/ ${NC}"
             }
         }
         stage ("Test 1") {
