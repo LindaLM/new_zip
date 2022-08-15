@@ -111,7 +111,7 @@ pipeline {
             }
         }
         stage("List"){
-            options { timeout(time: 10, unit: "SECONDS") }
+            options { timeout(time: 45, unit: "MINUTES") }
             steps {
                 echo "${RED}List generated${NC}"
             }
