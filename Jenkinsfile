@@ -75,6 +75,26 @@ pipeline {
                 }
             }
         }
+        stage("Test 2") {
+            options { timeout(time: 20, unit: "SECONDS") }
+            input {
+                message "Please download and test zip and press PROCEED to continue: \n ${env.BUILD_URL}!"
+            }
+            steps {
+                sh 'sleep 5s'
+                echo "${RED}Test 2 proceded${NC}"
+            }
+        }
+        stage("Test 3") {
+            options { timeout(time: 20, unit: "SECONDS") }
+            input {
+                message "Please download and test zip and press PROCEED to continue: \n ${env.BUILD_URL}!"
+            }
+            steps {
+                sh 'sleep 4s'
+                echo "${RED}Test 3 proceded${NC}"
+            }
+        }
         stage ("Test 1") {
             when {environment name: 'RUN_TEST1', value: 'true'}
             options { timeout(time: 12, unit: 'SECONDS') }
@@ -94,26 +114,6 @@ pipeline {
             options { timeout(time: 10, unit: "SECONDS") }
             steps {
                 echo "${RED}List generated${NC}"
-            }
-        }
-        stage("Test 2") {
-            options { timeout(time: 20, unit: "SECONDS") }
-            input {
-                message "Please download and test zip and press PROCEED to continue: \n ${env.BUILD_URL}!"
-            }
-            steps {
-                sh 'sleep 5s'
-                echo "${RED}Test 2 proceded${NC}"
-            }
-        }
-        stage("Test 3") {
-            options { timeout(time: 20, unit: "SECONDS") }
-            input {
-                message "Please download and test zip and press PROCEED to continue: \n ${env.BUILD_URL}!"
-            }
-            steps {
-                sh 'sleep 4s'
-                echo "${RED}Test 3 proceded${NC}"
             }
         }
         stage("D_N - S") {
