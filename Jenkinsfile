@@ -19,6 +19,7 @@ pipeline {
     }
     options {
         ansiColor('xterm')
+        timastamps()
     }
     environment {
         RED='\033[0;31m'
