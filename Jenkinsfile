@@ -10,6 +10,7 @@ pipeline {
         booleanParam defaultValue: true, description: 'Please enter if you want D_C', name: 'D_C'
         booleanParam defaultValue: true, description: 'Please enter if you want D_D', name: 'D_D'
         booleanParam defaultValue: true, description: 'Please enter if you want to MERGE branches', name: 'MERGE'
+        booleanParam defaultValue: true, description: 'Please enter if you want to RUN TEST 1', name: 'RUN_TEST1'
         choice choices: ['w', 'q'], description: 'Please choose R_VAR', name: 'R_VAR'
         choice choices: ['0.1', '2.2'], description: 'Please choose LINE', name: 'LINE'
         booleanParam defaultValue: true, description: 'Please enter if you want TXT', name: 'TXT'
@@ -54,6 +55,7 @@ pipeline {
             }
         }
         stage ("Test 1") {
+            when {environment name: 'RUN_TEST1', value: 'true'}
             options { timeout(time: 12, unit: 'SECONDS') }
             steps {
                 echo "${RED}Testing ... ${NC}"
