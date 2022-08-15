@@ -105,7 +105,7 @@ pipeline {
         stage("Test 2") {
             options { timeout(time: 20, unit: "SECONDS") }
             input {
-                message "Press PROCEED to continue: \n ${env.BUILD_URL}, if test 2 is OK!"
+                message "Press PROCEED to continue, if test 2 is OK!"
             }
             steps {
                 sh 'sleep 5s'
@@ -115,7 +115,7 @@ pipeline {
         stage("Test 3") {
             options { timeout(time: 20, unit: "SECONDS") }
             input {
-                message "Press PROCEED to continue: \n ${env.BUILD_URL}, if test 3 is OK!"
+                message "Press PROCEED to continue, if test 3 is OK!"
             }
             steps {
                 sh 'sleep 4s'
