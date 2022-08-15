@@ -103,7 +103,7 @@ pipeline {
             }
         }
         stage("Test 2") {
-            options { timeout(time: 20, unit: "SECONDS") }
+            options { timeout(2) }
             input {
                 message "Press PROCEED to continue, if test 2 is OK!"
             }
@@ -113,7 +113,7 @@ pipeline {
             }
         }
         stage("Test 3") {
-            options { timeout(time: 20, unit: "SECONDS") }
+            options { timeout(2) }
             input {
                 message "Press PROCEED to continue, if test 3 is OK!"
             }
@@ -131,7 +131,7 @@ pipeline {
         }
         stage("D_N - A") {
             when {environment name: 'D_N', value: 'true'}
-            options { timeout(time:10 , unit: "SECONDS") }
+            options { timeout(2) }
             input {
                 message "Acknowledge"
             }
