@@ -166,7 +166,7 @@ pipeline {
             }
         }
         stage("Verification"){
-            when { allOf {environment name: 'D_N', value: 'true';
+            when { anyOf {environment name: 'D_N', value: 'true';
                          environment name: 'B4K', value: 'true'} }
             options { timeout(time: 10, unit: "SECONDS") }
             steps {
