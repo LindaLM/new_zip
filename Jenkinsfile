@@ -54,28 +54,6 @@ pipeline {
                 echo "${RED}Build${NC}"
             }
         }
-        stage ("Test 1") {
-            when {environment name: 'RUN_TEST1', value: 'true'}
-            options { timeout(time: 12, unit: 'SECONDS') }
-            steps {
-                echo "${RED}Testing ... ${NC}"
-                sh 'sleep 3s'
-                echo "${RED}Tested${NC}"
-            }
-        }
-        stage("Analysis") {
-            options { timeout(time: 13, unit: "SECONDS") }
-            steps {
-                echo "${RED}Analysis done${NC}"
-            }
-        }
-        stage("List"){
-            options { timeout(time: 10, unit: "SECONDS") }
-            steps {
-                echo "${RED}List generated${NC}"
-            }
-        }
-
         stage("Archive") {
             options{ timeout(time: 10, unit: "SECONDS") }
             parallel {
@@ -95,6 +73,27 @@ pipeline {
                         echo "${RED}archived${NC}"
                     }
                 }
+            }
+        }
+        stage ("Test 1") {
+            when {environment name: 'RUN_TEST1', value: 'true'}
+            options { timeout(time: 12, unit: 'SECONDS') }
+            steps {
+                echo "${RED}Testing ... ${NC}"
+                sh 'sleep 3s'
+                echo "${RED}Tested${NC}"
+            }
+        }
+        stage("Analysis") {
+            options { timeout(time: 13, unit: "SECONDS") }
+            steps {
+                echo "${RED}Analysis done${NC}"
+            }
+        }
+        stage("List"){
+            options { timeout(time: 10, unit: "SECONDS") }
+            steps {
+                echo "${RED}List generated${NC}"
             }
         }
         stage("Test 2") {
